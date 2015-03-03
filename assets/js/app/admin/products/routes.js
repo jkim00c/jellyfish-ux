@@ -9,7 +9,7 @@ var ProductsData = require('./products_admin_controller').resolve,
 module.exports = function($stateProvider) {
   $stateProvider
     .state('base.admin.products', {
-      url: '/products',
+      url: '/manage_iq_products',
       abstract: true,
       template: '<div class="products-admin" ui-view></div>',
       controller: 'ProductsAdminController as productsAdminCtrl',
