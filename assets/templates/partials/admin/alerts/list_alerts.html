@@ -1,0 +1,22 @@
+<div class="alerts-list-page main-content " set-width>
+    <div class="content box-content">
+
+        <section-header name="Alerts">
+            <alerts-box class="product-box" ng-repeat="alert in listAlertsCtrl.alerts" alert="alert">
+                <a type="button" class="btn btn-primary" ui-sref="base.admin.alerts.edit({id: alert.id})">Edit</a>
+            </alerts-box>
+
+            <div class="add-box">
+                <div class="product-box-shadow">
+                    <a ui-sref="base.admin.alerts.add">
+                        <div class="fa-stack">
+                            <i class="fa fa-fw fa-stack-2x fa-circle-thin"></i>
+                            <i class="fa fa-fw fa-stack-1x fa-plus"></i>
+                        </div>
+                        <div class="title">Add New Alert</div>
+                    </a>
+                </div>
+            </div>
+        </section-header>
+    </div>
+</div>

@@ -5,6 +5,7 @@ var angular = require('angular');
 var AdminModule = angular.module('broker.admin', [
   require('./products').name,
   require('./projects').name,
+  require('./alerts').name,
   require('./users').name,
   require('./settings').name])
   .controller('AdminController', require('./admin_controller'))

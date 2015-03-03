@@ -1,0 +1,32 @@
+<div class="form-group" ng-class="{'has-error': adminAlertFormCtrl.hasError('message')}">
+    <label class="col-sm-2 control-label" for="message">Message:</label>
+
+    <div class="col-sm-6 controls">
+        <input id="message" name="message" type="text" ng-model="adminAlertFormCtrl.alert.message" ng-change="adminAlertFormCtrl.clearSubmitError('message')" class="form-control" required/>
+
+        <div class="help-block">
+            <div class="help-text" ng-show="adminAlertFormCtrl.hasError('message', 'required')">Message is Required.</div>
+            <div class="help-text" ng-show="adminAlertFormCtrl.hasError('message', 'submitError')">{{adminAlertFormCtrl.getSubmitErrorValue('message')}}</div>
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': adminAlertFormCtrl.hasError('status')}">
+    <label class="col-sm-2 control-label">Status:</label>
+
+    <div class="col-sm-6 controls">
+        <ui-select id="status" name="status" ng-model="adminAlertFormCtrl.alert.status" ng-change="adminAlertFormCtrl.clearSubmitError('status')" theme="selectize" required />
+        <ui-select-match>{{$select.selected.name}}</ui-select-match>
+        <ui-select-choices repeat="status.value as status in adminAlertFormCtrl.statuses">
+            <span ng-bind-html-unsafe="status.name">{{status.name}}</span>
+        </ui-select-choices>
+        </ui-select>
+
+        <div class="help-block">
+            <div class="help-text" ng-show="adminAlertFormCtrl.hasError('status', 'required')">Status is Required</div>
+            <div class="help-text" ng-show="adminAlertFormCtrl.hasError('status', 'submitError')">{{adminAlertFormCtrl.getSubmitErrorValue('status')}}</div>
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
