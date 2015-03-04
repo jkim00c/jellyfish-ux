@@ -9,12 +9,12 @@ var adminAlertsListState = 'base.admin.alerts.list';
  */
 
 /**@ngInject*/
-var AdminAlertFormController = function($state, currentUser) {
+var AdminAlertFormController = function($state) {
 
     this.$state = $state;
     this.alert = null;
     this.formSubmitted = false;
-    this.currentUser = currentUser;
+    this.currentUser = AdminAlertFormController.currentUser;
     // Set the available roles.
     // @todo Should probably be pulled from the backend
     // @todo For some reason ui-select goes nuts if this is returned from a method.
@@ -54,9 +54,9 @@ AdminAlertFormController.prototype = {
         this.alert = parent.alert;
         this.alert.project_id = '0';
         this.alert.order_item_id = '0';
-        console.log("currentUser: " + this.currentUser);
-        console.log("currentUserStringify: " + JSON.stringify(this.currentUser));
-        this.alert.staff_id = this.currentUser.id;
+        console.log("currentUser: " + parent.currentUser);
+        console.log("currentUserStringify: " + JSON.stringify(parent.currentUser));
+        this.alert.staff_id = parent.currentUser.id;
 
     },
 
@@ -67,7 +67,6 @@ AdminAlertFormController.prototype = {
         console.log("this.alert.project_id: " + this.alert.project_id);
         console.log("this.alert.order_item_id: " + this.alert.order_item_id);
         console.log("this.alert.staff_id: " + this.alert.staff_id);
-        console.log("this.currentUser: " + this.currentUser);
         this.formSubmitted = true;
         if (this.form.$invalid) {
             return false;
