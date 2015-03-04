@@ -14,9 +14,8 @@ var AdminAlertFormController = function($state) {
     this.$state = $state;
     this.alert = null;
     this.formSubmitted = false;
-
     // Set the available roles.
-    // @todo Should probably be pulled form the backend
+    // @todo Should probably be pulled from the backend
     // @todo For some reason ui-select goes nuts if this is returned from a method.
     this.statuses = [
         {
@@ -30,6 +29,14 @@ var AdminAlertFormController = function($state) {
         {
             value: 'CRITICAL',
             name: 'Critical'
+        },
+        {
+            value: 'UNKNOWN',
+            name: 'Unknown'
+        },
+        {
+            value: 'PENDING',
+            name: 'Pending'
         }
     ];
 
@@ -42,14 +49,24 @@ AdminAlertFormController.prototype = {
      *
      * @param parent
      */
-    initForm: function(parent) {
-        this.alert = parent.alerts;
+    initForm: function(parent, currentUser) {
+        this.alert = parent.alert;
+        this.alert.project_id = '0';
+        this.alert.order_item_id = '0';
+        console.log("currentUser: " + currentUser);
+        console.log("currentUserStringify: " + JSON.stringify(currentUser));
+        this.alert.staff_id = currentUser.id;
+
     },
 
     create: function() {
         console.log("CREATE!");
         console.log("this.alert.message: " + this.alert.message);
         console.log("this.alert.status: " + this.alert.status);
+        console.log("this.alert.project_id: " + this.alert.project_id);
+        console.log("this.alert.order_item_id: " + this.alert.order_item_id);
+        console.log("this.alert.staff_id: " + this.alert.staff_id);
+        console.log("this.currentUser: " + this.currentUser);
         this.formSubmitted = true;
         if (this.form.$invalid) {
             return false;

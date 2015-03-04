@@ -11,6 +11,7 @@ module.exports = function($stateProvider) {
           abstract: true,
           template: '<div class="projects-admin" ui-view></div>',
           controller: 'ProjectsAdminController as productsAdminCtrl'
+            // IS THIS A TYPO?                    ^^^^^^^^
       })
       .state('base.admin.projects.project_questions', {
           url: '/questions',
