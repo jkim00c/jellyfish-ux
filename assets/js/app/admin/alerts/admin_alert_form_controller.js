@@ -57,6 +57,8 @@ AdminAlertFormController.prototype = {
         console.log("currentUser: " + parent.currentUser);
         console.log("currentUserStringify: " + JSON.stringify(parent.currentUser));
         this.alert.staff_id = parent.currentUser.id;
+        this.alert.start_date = null;
+        this.alert.end_date = null;
 
     },
 
@@ -67,6 +69,8 @@ AdminAlertFormController.prototype = {
         console.log("this.alert.project_id: " + this.alert.project_id);
         console.log("this.alert.order_item_id: " + this.alert.order_item_id);
         console.log("this.alert.staff_id: " + this.alert.staff_id);
+        console.log("this.alert.start_date: " + this.alert.start_date);
+        console.log("this.alert.end_date: " + this.alert.end_date);
         this.formSubmitted = true;
         if (this.form.$invalid) {
             return false;
